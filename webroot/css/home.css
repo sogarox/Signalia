@@ -1,0 +1,178 @@
+/* Home page styles */
+@font-face {
+    font-family: 'cakefont';
+    src: url('../font/cakedingbats-webfont.eot');
+    src: url('../font/cakedingbats-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/cakedingbats-webfont.woff2') format('woff2'),
+    url('../font/cakedingbats-webfont.woff') format('woff'),
+    url('../font/cakedingbats-webfont.ttf') format('truetype'),
+    url('../font/cakedingbats-webfont.svg#cake_dingbatsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 64px 96px;
+}
+
+.text-content {
+  max-width: 45%;
+}
+
+.text-content h1 {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.text-content p {
+  font-size: 19.2px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.text-content button {
+  background-color: #7882A4;
+  color: white;
+  border: none;
+  padding: 12.8px 24px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.circle-image {
+  background-color: #FAF1EF;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-image img {
+  width: 180px;
+  height: 480px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text-content {
+    max-width: 100%;
+    margin-bottom: 32px;
+  }
+
+  .circle-image {
+    width: 300px;
+    height: 300px;
+  }
+
+  .circle-image img {
+    width: 200px;
+  }
+}.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 64px 96px;
+}
+
+.text-content {
+  max-width: 45%;
+}
+
+.text-content h1 {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.text-content p {
+  font-size: 19.2px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.text-content button {
+  background-color: #7882A4;
+  color: white;
+  border: none;
+  padding: 12.8px 24px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.circle-image {
+  background-color: #ffffff;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-image img {
+  width: 250px;
+  height: 250px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text-content {
+    max-width: 100%;
+    margin-bottom: 32px;
+  }
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #9d5da3;
+  color: white;
+}
+
+.navbar {
+  background-color: white;
+  padding: 16px 32px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  color: #653b69;
+  margin-left: 16px; 
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navbar a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #9d5da3;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.brand-name {
+  font-size: 24px;      
+  font-weight: bold;
+  margin-left: 8px;      
+  color: #653b69;
+}
