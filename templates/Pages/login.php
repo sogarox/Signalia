@@ -24,17 +24,17 @@
         <br><br><br>
         <img src="/Signalia/img/moderador.png" alt="Moderador">
         <br>
-        <button class="tipo" onclick="location.href='/Signalia/pages/loginPass?rol=moderador'">Moderador</button>
+        <button class="tipo" onclick="location.href='/Signalia/usuarios/loginPass?rol=moderador'">Moderador</button>
       </div>
       <div class="card estudiante">
         <br>
         <img src="/Signalia/img/estudiante.png" alt="Estudiante">
-        <button class="tipo" onclick="location.href='/Signalia/pages/loginPass?rol=estudiante'">Estudiante</button>
+        <button class="tipo" onclick="location.href='/Signalia/usuarios/loginPass?rol=estudiante'">Estudiante</button>
       </div>
       <div class="card educador">
         <br>
         <img src="/signalia/img/educador.png" alt="Educador">
-        <button class="tipo" onclick="location.href='/Signalia/pages/loginPass?rol=educador'">Educador</button>
+        <button class="tipo" onclick="location.href='/Signalia/usuarios/loginPass?rol=educador'">Educador</button>
       </div>
     </div>
   </section>

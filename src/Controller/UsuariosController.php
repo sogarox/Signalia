@@ -53,7 +53,7 @@ class UsuariosController extends AppController
             if ($this->Usuarios->save($usuario)) {
                 $this->Flash->success(__('The usuario has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'loginPass']);
             }
             $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
         }
@@ -75,11 +75,11 @@ class UsuariosController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $usuario = $this->Usuarios->patchEntity($usuario, $this->request->getData());
             if ($this->Usuarios->save($usuario)) {
-                $this->Flash->success(__('The usuario has been saved.'));
+                $this->Flash->success(__('Registro exitoso Inicia sesión a continuación.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
+            $this->Flash->error(__('Registro fallido, por favor intenta de nuevo.'));
         }
         $this->set(compact('usuario'));
     }
@@ -105,7 +105,7 @@ class UsuariosController extends AppController
     }
 
 
-    public function login()
+    public function loginPass()
     {
         if ($this->request->is('post')) {
             $usuario = $this->Usuarios->find()
@@ -121,12 +121,12 @@ class UsuariosController extends AppController
 
                 // Redirigir según el rol
                 switch ($usuario->rol) {
-                    case 'moderador':
+                    case 'Moderador':
                         return $this->redirect(['controller' => 'Moderador', 'action' => 'dashboard']);
-                    case 'estudiante':
-                        return $this->redirect(['controller' => 'Estudiantes', 'action' => 'dashboard']);
-                    case 'educador':
-                        return $this->redirect(['controller' => 'Educadores', 'action' => 'dashboard']);
+                    case 'Estudiante':
+                        return $this->redirect(['controller' => 'Estudiante', 'action' => 'dashboard']);
+                    case 'Educador':
+                        return $this->redirect(['controller' => 'Educador', 'action' => 'dashboard']);
                     default:
                         return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
                 }
