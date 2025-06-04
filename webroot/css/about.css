@@ -1,0 +1,309 @@
+body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+
+    .inclusion-section {
+      background-color: #9d5da3;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .inclusion-section .divider {
+      width: 30px;
+      height: 2px;
+      background-color: white;
+      margin: 0 auto 20px;
+    }
+
+    .inclusion-section h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: white;
+      margin: 0;
+    }
+
+    .inclusion-section p {
+      font-size: 18px;
+      color: white;
+      margin-top: 10px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .quienes-somos {
+      background-color: #fff;
+      padding: 80px 20px;
+    }
+
+    .qs-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .qs-img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .qs-texto {
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .qs-texto h2 {
+      font-size: 36px;
+      color: #111;
+      margin-bottom: 10px;
+    }
+
+    .qs-texto p {
+      font-size: 18px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .qs-texto .divider {
+      width: 40px;
+      height: 3px;
+      background-color: #9d5da3;
+      margin-bottom: 20px;
+    }
+
+
+    .mision-vision-section {
+      background-color: #9d5da3;
+      padding: 80px 20px;
+      color: white;
+    }
+
+    .mv-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 60px;
+    }
+
+    .mv-img img {
+      max-width: 300px;
+      height: 220px;
+    }
+
+    .mv-text {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 700px;
+    }
+
+    .mv-block h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+      border-bottom: 2px solid white;
+      display: inline-block;
+    }
+
+    .mv-block p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .equipo-section {
+      background-color: #fff;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .equipo-section h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .equipo-section h2::after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 2px;
+      background-color: #9d5da3;
+      margin: 10px auto 0;
+    }
+
+    .equipo-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .team-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 160px;
+    }
+
+    .team-member img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .team-member .name {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .team-member .role {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .cursos {
+  background-color: #6b3473;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.cursos h1 {
+  font-size: 32px;
+  margin-bottom: 50px;
+  color: white;
+  font-weight: 700;
+}
+
+.cursos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.curso-card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.curso-card:hover {
+  transform: translateY(-5px);
+}
+
+.curso-card h2 {
+  font-size: 20px;
+  color: #6b3473;
+  margin-bottom: 10px;
+}
+
+.curso-card p {
+  font-size: 16px;
+  color: #333;
+}
+
+
+    .cta-signalia {
+  background-color: #9d5da3;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  border-radius: 30px 30px 0 0;
+  margin-top: 60px;
+}
+
+.cta-signalia .cta-content h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.cta-signalia .cta-content p {
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.cta-signalia .cta-button {
+  background-color: white;
+  color: #9d5da3;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cta-signalia .cta-button:hover {
+  background-color: #f3e6f6;
+  color: #6b3473;
+}
+
+.footer {
+  background-color: #ffffff;
+  padding: 20px 40px;
+  border-top: 1px solid #ddd;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #6b3473;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #000;
+}
+
+.footer-nav a:last-child {
+  margin-right: 0;
+}
+
+.copyright {
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+}
+

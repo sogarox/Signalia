@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -9,11 +10,27 @@ namespace App\Controller;
  * @method \App\Model\Entity\Estudiante[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class EstudianteController extends AppController
+
 {
-    public function dashboard()
+    
+    private function requireRole($roles = [])
 {
-    // Aquí puedes poner lógica o simplemente mostrar la vista
+    $usuario = $this->request->getSession()->read('Auth.Usuario');
+    if (!$usuario || !in_array(strtolower($usuario->rol), $roles)) {
+        $this->Flash->error('No tienes permisos para acceder a esta sección.');
+        return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
+    }
+    return null;
 }
+    public $Cursos = null;
+    public function dashboard()
+    {
+        $redirect = $this->requireRole(['estudiante']);
+    if ($redirect) return $redirect;
+        $this->loadModel('Cursos');
+        $cursos = $this->Cursos->find('all')->all();
+        $this->set(compact('cursos'));
+    }
     /**
      * Index method
      *
@@ -21,6 +38,8 @@ class EstudianteController extends AppController
      */
     public function index()
     {
+        $redirect = $this->requireRole(['moderador']);
+    if ($redirect) return $redirect;
         $estudiante = $this->paginate($this->Estudiante);
 
         $this->set(compact('estudiante'));
@@ -35,6 +54,8 @@ class EstudianteController extends AppController
      */
     public function view($id = null)
     {
+        $redirect = $this->requireRole(['moderador','educador']);
+    if ($redirect) return $redirect;
         $estudiante = $this->Estudiante->get($id, [
             'contain' => [],
         ]);
@@ -49,6 +70,8 @@ class EstudianteController extends AppController
      */
     public function add()
     {
+        $redirect = $this->requireRole(['moderador']);
+    if ($redirect) return $redirect;
         $estudiante = $this->Estudiante->newEmptyEntity();
         if ($this->request->is('post')) {
             $estudiante = $this->Estudiante->patchEntity($estudiante, $this->request->getData());
@@ -71,6 +94,8 @@ class EstudianteController extends AppController
      */
     public function edit($id = null)
     {
+        $redirect = $this->requireRole(['estudiante','moderador']);
+    if ($redirect) return $redirect;
         $estudiante = $this->Estudiante->get($id, [
             'contain' => [],
         ]);
@@ -95,6 +120,8 @@ class EstudianteController extends AppController
      */
     public function delete($id = null)
     {
+        $redirect = $this->requireRole(['moderador']);
+    if ($redirect) return $redirect;
         $this->request->allowMethod(['post', 'delete']);
         $estudiante = $this->Estudiante->get($id);
         if ($this->Estudiante->delete($estudiante)) {

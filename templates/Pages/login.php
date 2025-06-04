@@ -5,6 +5,24 @@
     <title>Acerca de Nosotros | Signalia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= $this->Html->css('add') ?>
+    <?php
+    $usuario = $this->getRequest()->getSession()->read('Auth.Usuario');
+            $dashboardUrl = ['controller' => 'Pages', 'action' => 'home']; // Valor por defecto
+
+            if ($usuario) {
+                switch (strtolower($usuario->rol)) {
+                    case 'moderador':
+                        $dashboardUrl = ['controller' => 'Moderador', 'action' => 'dashboard'];
+                        break;
+                    case 'estudiante':
+                        $dashboardUrl = ['controller' => 'Estudiante', 'action' => 'dashboard'];
+                        break;
+                    case 'educador':
+                        $dashboardUrl = ['controller' => 'Educador', 'action' => 'dashboard'];
+                        break;
+                }
+            }
+    ?>
 </head>
 <body>
     <div class="navbar">

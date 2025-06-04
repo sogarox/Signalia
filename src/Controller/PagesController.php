@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -14,6 +15,7 @@ declare(strict_types=1);
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Core\Configure;
@@ -43,8 +45,51 @@ class PagesController extends AppController
      *   be found and not in debug mode.
      * @throws \Cake\View\Exception\MissingTemplateException In debug mode.
      */
+    public function loginPass()
+    {
+        $usuario = $this->request->getSession()->read('Auth.Usuario');
+        if ($usuario) {
+            switch (strtolower($usuario->rol)) {
+                case 'moderador':
+                    return $this->redirect(['controller' => 'Moderador', 'action' => 'dashboard']);
+                case 'estudiante':
+                    return $this->redirect(['controller' => 'Estudiante', 'action' => 'dashboard']);
+                case 'educador':
+                    return $this->redirect(['controller' => 'Educador', 'action' => 'dashboard']);
+            }
+        }
+        // ...código normal para mostrar loginPass...
+    }
+    public function home()
+    {
+        $usuario = $this->request->getSession()->read('Auth.Usuario');
+        if ($usuario) {
+            switch (strtolower($usuario->rol)) {
+                case 'moderador':
+                    return $this->redirect(['controller' => 'Moderador', 'action' => 'dashboard']);
+                case 'estudiante':
+                    return $this->redirect(['controller' => 'Estudiante', 'action' => 'dashboard']);
+                case 'educador':
+                    return $this->redirect(['controller' => 'Educador', 'action' => 'dashboard']);
+            }
+        }
+        // ...código normal para mostrar home...
+    }
     public function display(string ...$path): ?Response
     {
+        if (!empty($path[0]) && $path[0] === 'home') {
+        $usuario = $this->request->getSession()->read('Auth.Usuario');
+        if ($usuario) {
+            switch (strtolower($usuario->rol)) {
+                case 'moderador':
+                    return $this->redirect(['controller' => 'Moderador', 'action' => 'dashboard']);
+                case 'estudiante':
+                    return $this->redirect(['controller' => 'Estudiante', 'action' => 'dashboard']);
+                case 'educador':
+                    return $this->redirect(['controller' => 'Educador', 'action' => 'dashboard']);
+            }
+        }
+    }
         if (!$path) {
             return $this->redirect('/');
         }
@@ -59,6 +104,7 @@ class PagesController extends AppController
         if (!empty($path[1])) {
             $subpage = $path[1];
         }
+        
         $this->set(compact('page', 'subpage'));
 
         try {

@@ -9,6 +9,25 @@
 </head>
 <div class="usuarios index content">
     <?= $this->Html->link(__('New Usuario'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?php  
+    $usuario = $this->getRequest()->getSession()->read('Auth.Usuario');
+            $dashboardUrl = ['controller' => 'Pages', 'action' => 'home']; // Valor por defecto
+
+            if ($usuario) {
+                switch (strtolower($usuario->rol)) {
+                    case 'moderador':
+                        $dashboardUrl = ['controller' => 'Moderador', 'action' => 'dashboard'];
+                        break;
+                    case 'estudiante':
+                        $dashboardUrl = ['controller' => 'Estudiante', 'action' => 'dashboard'];
+                        break;
+                    case 'educador':
+                        $dashboardUrl = ['controller' => 'Educador', 'action' => 'dashboard'];
+                        break;
+                }
+            }
+    ?>
+    <?= $this->Html->link(__('Volver al Dashboard'), $dashboardUrl, ['class' => 'button']) ?>
     <h3><?= __('Usuarios') ?></h3>
     <div class="table-responsive">
         <table>
@@ -50,6 +69,7 @@
             </tbody>
         </table>
     </div>
+    
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('first')) ?>
@@ -61,3 +81,4 @@
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>
+

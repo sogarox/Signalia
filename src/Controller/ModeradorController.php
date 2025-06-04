@@ -10,9 +10,19 @@ namespace App\Controller;
  */
 class ModeradorController extends AppController
 {
+    private function requireRole($roles = [])
+{
+    $usuario = $this->request->getSession()->read('Auth.Usuario');
+    if (!$usuario || !in_array(strtolower($usuario->rol), $roles)) {
+        $this->Flash->error('No tienes permisos para acceder a esta sección.');
+        return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
+    }
+    return null;
+}
     public function dashboard()
 {
-    // Aquí puedes poner lógica o simplemente mostrar la vista
+    $redirect = $this->requireRole(['moderador']);
+    if ($redirect) return $redirect;
 }
     /**
      * Index method
@@ -21,6 +31,9 @@ class ModeradorController extends AppController
      */
     public function index()
     {
+        $redirect = $this->requireRole(['moderador']);
+    if ($redirect) return $redirect;
+
         $moderador = $this->paginate($this->Moderador);
 
         $this->set(compact('moderador'));
@@ -35,6 +48,9 @@ class ModeradorController extends AppController
      */
     public function view($id = null)
     {
+        $redirect = $this->requireRole(['moderador']);
+    if ($redirect) return $redirect;
+
         $moderador = $this->Moderador->get($id, [
             'contain' => [],
         ]);
@@ -49,6 +65,9 @@ class ModeradorController extends AppController
      */
     public function add()
     {
+        $redirect = $this->requireRole(['moderador']);
+    if ($redirect) return $redirect;
+
         $moderador = $this->Moderador->newEmptyEntity();
         if ($this->request->is('post')) {
             $moderador = $this->Moderador->patchEntity($moderador, $this->request->getData());
@@ -71,6 +90,9 @@ class ModeradorController extends AppController
      */
     public function edit($id = null)
     {
+        $redirect = $this->requireRole(['moderador']);
+    if ($redirect) return $redirect;
+
         $moderador = $this->Moderador->get($id, [
             'contain' => [],
         ]);
@@ -95,6 +117,9 @@ class ModeradorController extends AppController
      */
     public function delete($id = null)
     {
+        $redirect = $this->requireRole(['moderador']);
+    if ($redirect) return $redirect;
+
         $this->request->allowMethod(['post', 'delete']);
         $moderador = $this->Moderador->get($id);
         if ($this->Moderador->delete($moderador)) {

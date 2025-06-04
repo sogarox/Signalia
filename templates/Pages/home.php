@@ -54,7 +54,22 @@ if (!Configure::read('debug')) :
         'Please replace templates/Pages/home.php with your own version or re-enable debug mode.'
     );
 endif;
+$usuario = $this->getRequest()->getSession()->read('Auth.Usuario');
+            $dashboardUrl = ['controller' => 'Pages', 'action' => 'home']; // Valor por defecto
 
+            if ($usuario) {
+                switch (strtolower($usuario->rol)) {
+                    case 'moderador':
+                        $dashboardUrl = ['controller' => 'Moderador', 'action' => 'dashboard'];
+                        break;
+                    case 'estudiante':
+                        $dashboardUrl = ['controller' => 'Estudiante', 'action' => 'dashboard'];
+                        break;
+                    case 'educador':
+                        $dashboardUrl = ['controller' => 'Educador', 'action' => 'dashboard'];
+                        break;
+                }
+            }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +98,7 @@ endif;
     <div>
       <a href="/Signalia/pages/home">Inicio</a>
       <a href="/Signalia/pages/about">Sobre nosotros</a>
-      <a href="/Signalia/pages/login">Iniciar sesión</a>
+      <a href="/Signalia/usuarios/loginPass">Iniciar sesión</a>
       <a href="/Signalia/usuarios/add">Registro</a>
     </div>
   </div>

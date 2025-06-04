@@ -19,6 +19,11 @@ class UsuariosController extends AppController
      */
     public function index()
     {
+         $usuario = $this->request->getSession()->read('Auth.Usuario');
+    if (!$usuario || $usuario->rol !== 'Moderador') {
+        return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
+    }
+    
         $usuarios = $this->paginate($this->Usuarios);
 
         $this->set(compact('usuarios'));
@@ -135,4 +140,10 @@ class UsuariosController extends AppController
             }
         }
     }
+    public function logout()
+{
+    $this->request->getSession()->destroy();
+    $this->Flash->success('Sesión cerrada correctamente.');
+    return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
+}
 }
