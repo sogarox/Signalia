@@ -11,7 +11,7 @@
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Form->postLink(
-                __('Delete'),
+                __('Eliminar la cuenta'),
                 ['action' => 'delete', $usuario->id],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $usuario->id), 'class' => 'side-nav-item']
             ) ?>

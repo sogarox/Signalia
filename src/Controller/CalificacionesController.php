@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -13,14 +14,14 @@ class CalificacionesController extends AppController
 {
     public $Actividades = null;
     private function requireRole($roles = [])
-{
-    $usuario = $this->request->getSession()->read('Auth.Usuario');
-    if (!$usuario || !in_array(strtolower($usuario->rol), $roles)) {
-        $this->Flash->error('No tienes permisos para acceder a esta sección.');
-        return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
+    {
+        $usuario = $this->request->getSession()->read('Auth.Usuario');
+        if (!$usuario || !in_array(strtolower($usuario->rol), $roles)) {
+            $this->Flash->error('No tienes permisos para acceder a esta sección.');
+            return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
+        }
+        return null;
     }
-    return null;
-}
     /**
      * Index method
      *
@@ -29,7 +30,7 @@ class CalificacionesController extends AppController
     public function index()
     {
         $redirect = $this->requireRole(['moderador', 'educador']);
-    if ($redirect) return $redirect;
+        if ($redirect) return $redirect;
         $calificaciones = $this->paginate($this->Calificaciones);
 
         $this->set(compact('calificaciones'));
@@ -45,7 +46,7 @@ class CalificacionesController extends AppController
     public function view($id = null)
     {
         $redirect = $this->requireRole(['moderador', 'educador']);
-    if ($redirect) return $redirect;
+        if ($redirect) return $redirect;
         $calificacione = $this->Calificaciones->get($id, [
             'contain' => [],
         ]);
@@ -61,15 +62,15 @@ class CalificacionesController extends AppController
     public function add()
     {
         $this->loadModel('Actividades');
-    $actividades = $this->Actividades->find('list')->toArray();
-
-    if (empty($actividades)) {
-        $this->Flash->error('No hay actividades registradas. Debes crear una actividad antes de calificar.');
-        return $this->redirect(['controller' => 'Actividades', 'action' => 'add']);
-    }
+        $actividades = $this->Actividades->find('list')->toArray();
+        $this->set(compact('actividades'));
+        if (empty($actividades)) {
+            $this->Flash->error('No hay actividades registradas. Debes crear una actividad antes de calificar.');
+            return $this->redirect(['controller' => 'Actividades', 'action' => 'add']);
+        }
 
         $redirect = $this->requireRole(['moderador', 'educador']);
-    if ($redirect) return $redirect;
+        if ($redirect) return $redirect;
         $calificacione = $this->Calificaciones->newEmptyEntity();
         if ($this->request->is('post')) {
             $calificacione = $this->Calificaciones->patchEntity($calificacione, $this->request->getData());
@@ -93,7 +94,7 @@ class CalificacionesController extends AppController
     public function edit($id = null)
     {
         $redirect = $this->requireRole(['moderador', 'educador']);
-    if ($redirect) return $redirect;
+        if ($redirect) return $redirect;
         $calificacione = $this->Calificaciones->get($id, [
             'contain' => [],
         ]);
@@ -119,7 +120,7 @@ class CalificacionesController extends AppController
     public function delete($id = null)
     {
         $redirect = $this->requireRole(['moderador', 'educador']);
-    if ($redirect) return $redirect;
+        if ($redirect) return $redirect;
         $this->request->allowMethod(['post', 'delete']);
         $calificacione = $this->Calificaciones->get($id);
         if ($this->Calificaciones->delete($calificacione)) {

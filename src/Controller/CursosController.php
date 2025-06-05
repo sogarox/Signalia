@@ -59,10 +59,8 @@ class CursosController extends AppController
      */
     public function add()
     {
-        $usuario = $this->request->getSession()->read('Auth.Usuario');
-    if (!$usuario) {
-        return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
-    }
+        $redirect = $this->requireRole(['moderador', 'educador']);
+    if ($redirect) return $redirect;
         $curso = $this->Cursos->newEmptyEntity();
         if ($this->request->is('post')) {
             $curso = $this->Cursos->patchEntity($curso, $this->request->getData());
@@ -85,10 +83,8 @@ class CursosController extends AppController
      */
     public function edit($id = null)
     {
-        $usuario = $this->request->getSession()->read('Auth.Usuario');
-    if (!$usuario) {
-        return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
-    }
+        $redirect = $this->requireRole(['moderador', 'educador']);
+    if ($redirect) return $redirect;
         $curso = $this->Cursos->get($id, [
             'contain' => [],
         ]);
@@ -113,10 +109,8 @@ class CursosController extends AppController
      */
     public function delete($id = null)
     {
-        $usuario = $this->request->getSession()->read('Auth.Usuario');
-    if (!$usuario) {
-        return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
-    }
+        $redirect = $this->requireRole(['moderador', 'educador']);
+    if ($redirect) return $redirect;
         $this->request->allowMethod(['post', 'delete']);
         $curso = $this->Cursos->get($id);
         if ($this->Cursos->delete($curso)) {

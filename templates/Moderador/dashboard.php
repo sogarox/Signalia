@@ -8,7 +8,6 @@
         <h2>Acciones disponibles:</h2>
         <ul>
             <li><?= $this->Html->link('Gestionar Usuarios', ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-            <li><?= $this->Html->link('Gestionar Contenidos', ['controller' => 'Cursos', 'action' => 'index']) ?></li>
-            <li><?= $this->Html->link('Ver Reportes', ['controller' => 'Reportes', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link('Gestionar Contenidos', ['controller' => 'Moderador', 'action' => 'contentmanager']) ?></li>
         </ul>
     </div>

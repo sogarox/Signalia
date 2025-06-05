@@ -20,7 +20,7 @@
                 <legend><?= __('Añadir Calificacion') ?></legend>
                 <?php
                     echo $this->Form->control('id_usuario');
-                    echo $this->Form->control('id_actividad');
+                    echo $this->Form->control('id_actividad', ['options' => $actividades]);
                     echo $this->Form->control('calificacion');
                     echo $this->Form->control('fecha_realizacion');
                 ?>

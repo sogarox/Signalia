@@ -11,6 +11,7 @@ namespace App\Controller;
  */
 class ModulosController extends AppController
 {
+    public $Cursos = null;
     private function requireRole($roles = [])
 {
     $usuario = $this->request->getSession()->read('Auth.Usuario');
@@ -59,6 +60,13 @@ class ModulosController extends AppController
      */
     public function add()
     {
+        $this->loadModel('Cursos');
+        $cursos = $this->Cursos->find('list')->toArray();
+        $this->set(compact('cursos'));
+        if (empty($cursos)) {
+            $this->Flash->error('No hay cursos registrados. Debes crear un curso antes de establecer su módulo.');
+            return $this->redirect(['controller' => 'Cursos', 'action' => 'add']);
+        }
         $redirect = $this->requireRole(['moderador', 'educador']);
     if ($redirect) return $redirect;
         $modulo = $this->Modulos->newEmptyEntity();

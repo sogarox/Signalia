@@ -77,7 +77,7 @@ $usuario = $this->getRequest()->getSession()->read('Auth.Usuario');
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        CakePHP: the rapid development PHP framework:
+        Signalia
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>

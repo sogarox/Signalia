@@ -130,4 +130,10 @@ class ModeradorController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    
+    public function contentmanager(){
+        $redirect = $this->requireRole(['moderador']);
+        if ($redirect) return $redirect;        
+        $this->set('title', 'Content Manager');
+    }
 }

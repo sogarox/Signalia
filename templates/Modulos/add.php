@@ -18,7 +18,7 @@
             <fieldset>
                 <legend><?= __('Add Modulo') ?></legend>
                 <?php
-                    echo $this->Form->control('id_curso');
+                     echo $this->Form->control('id_curso', ['options' => $cursos]);
                     echo $this->Form->control('titulo');
                     echo $this->Form->control('descripcion');
                     echo $this->Form->control('orden');
