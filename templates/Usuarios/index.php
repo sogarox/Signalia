@@ -5,7 +5,7 @@
  */
 ?>
 <head>
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']); ?>
+    <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
 </head>
 <div class="usuarios index content">
     <?= $this->Html->link(__('New Usuario'), ['action' => 'add'], ['class' => 'button float-right']) ?>

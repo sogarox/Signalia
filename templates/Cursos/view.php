@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\Curso $curso
  */
 ?>
+<?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']); ?>
 <div class="row">
     <aside class="column">
         <div class="side-nav">

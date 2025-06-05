@@ -1,42 +1,37 @@
 <?php
-
 /**
  * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\Curso> $cursos
+ * @var iterable<\App\Model\Entity\Modulo> $modulos
  */
 ?>
-
-<div class="cursos index content">
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
-    <?= $this->Html->link(__('Subir nuevo Curso'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Cursos') ?></h3>
-
+<?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']); ?>
+<div class="modulos index content">
+    <?= $this->Html->link(__('New Modulo'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <h3><?= __('Modulos') ?></h3>
     <div class="table-responsive">
         <table>
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
+                    <th><?= $this->Paginator->sort('id_curso') ?></th>
                     <th><?= $this->Paginator->sort('titulo') ?></th>
-                    <th><?= $this->Paginator->sort('categoria_discapacidad') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
+                    <th><?= $this->Paginator->sort('orden') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($cursos as $curso): ?>
-                    <tr>
-                        <td><?= $this->Number->format($curso->id) ?></td>
-                        <td><?= h($curso->titulo) ?></td>
-                        <td><?= h($curso->categoria_discapacidad) ?></td>
-                        <td><?= h($curso->created) ?></td>
-                        <td><?= h($curso->modified) ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['action' => 'view', $curso->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $curso->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $curso->id], ['confirm' => __('Are you sure you want to delete # {0}?', $curso->id)]) ?>
-                        </td>
-                    </tr>
+                <?php foreach ($modulos as $modulo): ?>
+                <tr>
+                    <td><?= $this->Number->format($modulo->id) ?></td>
+                    <td><?= $this->Number->format($modulo->id_curso) ?></td>
+                    <td><?= h($modulo->titulo) ?></td>
+                    <td><?= $this->Number->format($modulo->orden) ?></td>
+                    <td class="actions">
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $modulo->id]) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $modulo->id]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $modulo->id], ['confirm' => __('Are you sure you want to delete # {0}?', $modulo->id)]) ?>
+                    </td>
+                </tr>
                 <?php endforeach; ?>
             </tbody>
             <?php
@@ -58,10 +53,9 @@
             }
             ?>
             <?= $this->Html->link(__('Volver al Dashboard'), $dashboardUrl, ['class' => 'button']) ?>
+        
         </table>
-
     </div>
-
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('first')) ?>

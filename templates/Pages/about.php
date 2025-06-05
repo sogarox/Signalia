@@ -18,7 +18,7 @@
     <div>
       <a href="/Signalia/pages/home">Inicio</a>
       <a href="/Signalia/pages/about">Sobre nosotros</a>
-      <a href="/Signalia/pages/login">Iniciar sesión</a>
+      <a href="/Signalia/usuarios/loginPass">Iniciar sesión</a>
       <a href="/Signalia/usuarios/add">Registro</a>
     </div>
   </div>

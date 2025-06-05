@@ -25,7 +25,7 @@
             <div class="text">
                 <strong><?= __('Descripcion') ?></strong>
                 <blockquote>
-                    <?= $this->Text->autoParagraph(h($curso->descripcion)); ?>
+                    <?= $this->Text->autoParagraph($curso->descripcion); ?>
                 </blockquote>
             </div>
         </div>

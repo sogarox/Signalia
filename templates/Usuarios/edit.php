@@ -4,6 +4,8 @@
  * @var \App\Model\Entity\Usuario $usuario
  */
 ?>
+<?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
+
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -13,7 +15,7 @@
                 ['action' => 'delete', $usuario->id],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $usuario->id), 'class' => 'side-nav-item']
             ) ?>
-            <?= $this->Html->link(__('List Usuarios'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Volver'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">
